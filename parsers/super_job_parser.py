@@ -5,7 +5,7 @@ from typing import Optional, List
 import requests
 from dotenv import load_dotenv
 
-from abc_parser import ParserVacanciesABC
+import parsers.abc_parser
 
 
 @dataclass
@@ -47,7 +47,7 @@ class Vacancy:
         return self == other or self > other
 
 
-class SuperJobParser(ParserVacanciesABC):
+class SuperJobParser(parsers.abc_parser.ParserVacanciesABC):
     url = "https://api.superjob.ru/2.0"
     load_dotenv()
     api_key = os.environ.get("API_KEY")
